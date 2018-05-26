@@ -5,7 +5,7 @@
 
 #ifndef _INODE_H
 #define _INODE_H
-
+#include "DiskInode.h"
 class Inode {
 public: 
     enum InodeFlag;
@@ -31,8 +31,7 @@ public:
     short i_gid;			/* 文件所有者的组标识数 */
     int i_size;				/* 文件大小，字节为单位 */
     int i_addr[10];			/* 用于文件逻辑块好和物理块好转换的基本索引表 */
-    
-    
+	    
     /*
 	 * @comment 对当前Inode进行读入，读入的IO参数在Context当中
 	 *
@@ -62,6 +61,11 @@ public:
 	 * @comment 将逻辑盘块映射到物理盘块
      */
     int Bmap(int lbn);
+	/**
+	 * @comment 将DiskInode的值赋给Inode
+	 *
+	 */
+	void FromDiskInode(DiskInode DInode);
 public:
 	Inode();
 	~Inode();

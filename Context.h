@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Project Untitled
  */
 
@@ -20,7 +20,7 @@ public:
     IOParameter c_IOParameter;
     char* c_Buffer;
 	FileSystem c_FileSystem;
-    SuperBlock c_spb;
+    SuperBlock* c_spb;
     FILE* MyDisk;
     char* c_pReadBuffer;
     
@@ -46,6 +46,5 @@ public:
 	Context();
 	~Context();
 };
-extern Context cxt;
 
 #endif //_CONTEXT_H

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Project Untitled
  */
 
@@ -8,15 +8,19 @@
 /**
  * Context implementation
  */
+
 Context cxt;
 
 Context::Context() {
+
+	this->c_spb = new SuperBlock();
 	this->MyDisk = fopen("MyDisk.img", "rb+");
 	
 }
 
 Context::~Context() {
-
+	delete this->c_spb;
+	fclose(this->MyDisk);
 }
 
 /**
@@ -65,7 +69,7 @@ FILE* Context::GetMyDisk() {
  * @return SuperBlock*
  */
 SuperBlock* Context::GetSuperBlock() {
-    return &(this->c_spb);
+    return this->c_spb;
 }
 
 

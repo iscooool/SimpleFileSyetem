@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Project Untitled
  */
 
@@ -8,17 +8,20 @@
 
 class SuperBlock {
 public: 
-    int s_isize;
-    int s_fsize;
-    int s_nfree;
-    int s_free[100];
-    int s_ninode;
-    int s_inode[100];
-    int s_flock;
-    int s_ilock;
-    int s_fmod;
-    int s_time;
-    int padding[48];
+    int s_isize;				/* 外存Inode区占用的盘块数 */
+    int s_fsize;				/* 盘块总数 */
+
+    int s_nfree;				/* 直接管理的空闲盘块数量 */
+    int s_free[100];			/* 直接管理的空闲盘块索引表 */
+
+    int s_ninode;				/* 直接管理的空闲外存Inode数量 */
+    int s_inode[100];			/* 直接管理的空闲外存Inode索引表 */
+
+    int s_flock;				/* 封锁空闲盘块索引表标志 */
+    int s_ilock;				/* 封锁空闲Inode表标志 */
+    int s_fmod;					/* 内存中super block副本被修改标志，意味着需要更新外存对应的Super Block */
+    int s_time;					/* 最近一次更新时间 */
+    int padding[48];			/* 填充使SuperBlock块大小等于1024字节，占据2个扇区 */
     
 public:
 	SuperBlock();

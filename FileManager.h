@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * Project Untitled
  */
 
@@ -20,67 +20,67 @@ public:
     void Initialize();
     
 	/**
-	 * @comment ¸ñÊ½»¯Ó²ÅÌ
+	 * @comment æ ¼å¼åŒ–ç¡¬ç›˜
 	 */
     void fformat();
     
     /**
      * @param fName
      * @param mode
-	 * @comment ´´½¨ÎÄ¼ş
+	 * @comment åˆ›å»ºæ–‡ä»¶
      */
-    int fcreat(char* fName, int mode);
+    int Fcreat(char* fName, int mode);
     
     /**
      * @param fName
      * @param mode
-	 * @comment ´ò¿ªÎÄ¼ş
+	 * @comment æ‰“å¼€æ–‡ä»¶
      */
-    int fopen(char* fName, int mode);
+    int Fopen(char* fName, int mode);
     
     /**
      * @param fd
-	 * @comment ¹Ø±ÕÎÄ¼ş
+	 * @comment å…³é—­æ–‡ä»¶
      */
-    void fclose(int fd);
-    
-    /**
-     * @param fd
-     * @param buffer
-     * @param length
-	 * @comment ¶ÁÈ¡length³¤¶ÈµÄÊı¾İµ½bufferµ±ÖĞ
-     */
-    int fread(int fd, char* buffer, int length);
+    void Fclose(int fd);
     
     /**
      * @param fd
      * @param buffer
      * @param length
-	 * @½«length´óĞ¡µÄÊı¾İĞ´Èëµ½fdµ±ÖĞ
+	 * @comment è¯»å–lengthé•¿åº¦çš„æ•°æ®åˆ°bufferå½“ä¸­
      */
-    int fwrite(int fd, char* buffer, int length);
+    int Fread(int fd, char* buffer, int length);
+    
+    /**
+     * @param fd
+     * @param buffer
+     * @param length
+	 * @å°†lengthå¤§å°çš„æ•°æ®å†™å…¥åˆ°fdå½“ä¸­
+     */
+    int Fwrite(int fd, char* buffer, int length);
     
     /**
      * @param fd
      * @param buffer
      * @param length
      * @param mode
-	 * @comment ¸Ãº¯ÊıÓĞfreadºÍfwriteµ÷ÓÃ
+	 * @comment è¯¥å‡½æ•°æœ‰freadå’Œfwriteè°ƒç”¨
      */
     int Rdwr(int fd, char* buffer, int length, enum File::FileFlags mode);
     
     /**
      * @param fd
      * @param position
-     * @comment ½«ÎÄ¼şÖ¸ÕëÖ¸Ïòposition
+     * @comment å°†æ–‡ä»¶æŒ‡é’ˆæŒ‡å‘position
      */
-    int flseek(int fd, int position);
+    int Flseek(int fd, int position);
     
     /**
      * @param fName
-     * @comment É¾³ıÎÄ¼ş
+     * @comment åˆ é™¤æ–‡ä»¶
      */
-    int fdelete(char* fName);
+    int Fdelete(char* fName);
 public:
 	FileManager();
 	~FileManager();
