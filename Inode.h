@@ -9,16 +9,16 @@
 class Inode {
 public: 
     enum InodeFlag;
-    static const unsigned int IFMY = 0x6000;
-    static const unsigned int IFDIR = 0x4000;
-    static const unsigned int ILARG = 0x1000;
-    static const unsigned int IREAD = 0x100;
-    static const unsigned int IWRITE = 0x80;
-    static const unsigned int IEXEC = 0x40;
-    static const unsigned int IRWXU = (IREAD|IWRITE|IEXEC);
-    static const unsigned int IRWXG = ((IRWXU) >> 3);
-    static const unsigned int IRWXO = ((IRWXU) >> 6);
-    static const int BLOCK_SIZE = 512;
+    static const unsigned int IALLOC = 0x6000;						// 文件被使用 
+    static const unsigned int IFDIR = 0x4000;						// 文件类型：目录文件 
+    static const unsigned int ILARG = 0x1000;						// 文件长度类型：大型或巨型文件 
+    static const unsigned int IREAD = 0x100;						// 对文件的读权限 
+    static const unsigned int IWRITE = 0x80;						// 对文件的写权限 
+    static const unsigned int IEXEC = 0x40;							// 对文件的执行权限 
+    static const unsigned int IRWXU = (IREAD|IWRITE|IEXEC);			// 文件主对文件的读、写、执行权限 
+    static const unsigned int IRWXG = ((IRWXU) >> 3);				// 文件主同组用户对文件的读、写、执行权限 
+    static const unsigned int IRWXO = ((IRWXU) >> 6);				// 其他用户对文件的读、写、执行权限 
+    static const int BLOCK_SIZE = 512;								// 每一个盘块所占的字节数
     static const int ADDRESS_PER_INDEX_BLOCK = BLOCK_SIZE / sizeof(int);
     static const int SMALL_FILE_BLOCK = 6;
     static const int LARGE_FILE_BLOCK = 128 * 2 + 6;
@@ -55,7 +55,11 @@ public:
 	*
 	*/
     void ICopy();
-    
+	/**
+	 * @comment 将包含内存Inode字符块中信息拷贝到外存Inode中
+	 *
+	 */
+	void IUpdate();
     /**
      * @param lbn
 	 * @comment 将逻辑盘块映射到物理盘块
@@ -66,6 +70,11 @@ public:
 	 *
 	 */
 	void FromDiskInode(DiskInode DInode);
+	/**
+	 * @comment 将Inode的值赋给DiskInode
+	 *
+	 */
+	DiskInode ToDiskInode();
 public:
 	Inode();
 	~Inode();

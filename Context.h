@@ -22,7 +22,7 @@ public:
 	FileSystem c_FileSystem;
     SuperBlock* c_spb;
     FILE* MyDisk;
-    char* c_pReadBuffer;
+    char* c_ReadBuffer;
     
   
     

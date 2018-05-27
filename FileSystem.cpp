@@ -26,24 +26,7 @@ void FileSystem::Initialize() {
     return;
 }
 
-/**
- * @comment 从MyDisk的offset读取nbytes字节到buffer当中
- */
-void FileSystem::ReadFromDisk(int offset, char* buffer, int nbytes) {
-	FILE* MyDisk = cxt.GetMyDisk();
 
-	if (MyDisk && buffer&& offset >= 0 && nbytes >= 0) 
-	{
-
-	}
-}
-
-/**
- * @comment 从offset写入nbytes字节的buffer内容到MyDisk当中
- */
-void FileSystem::WriteToDisk(int offset, char* buffer, int nbytes) {
-
-}
 
 /**
  * @return void

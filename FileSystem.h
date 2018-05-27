@@ -29,17 +29,7 @@ public:
     */
     void Initialize();
 
-	/*
-	 *@comment 从MyDisk的offset读取nbytes字节到buffer当中
-	 */
-	void ReadFromDisk(int offset, char* buffer, int nbytes);
-
-	/*
-	 *@comment 从offset写入nbytes字节的buffer内容到MyDisk当中
-	 */
-	void WriteToDisk(int offset, char* buffer, int nbytes);
-
-
+	
    /*
     *@comment 加载SuperBlock到内存当中
     *

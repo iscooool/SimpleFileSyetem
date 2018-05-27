@@ -40,7 +40,7 @@ void FileManager::fformat() {
 	New_spb->s_free[0] = 0;
 	
 
-	for (int i = 1; i < FileSystem::DATA_ZONE_SIZE;i++)//这里初始化空闲盘块索引表,注：盘块号从1开始计数
+	for (int i = FileSystem::DATA_ZONE_SIZE - 1; i >= 1; i--)//这里初始化空闲盘块索引表,注：盘块号从1开始计数
 	{
 		if (New_spb->s_nfree >= 100)
 		{

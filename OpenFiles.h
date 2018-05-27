@@ -7,6 +7,7 @@
 #define _OPENFILES_H
 #include "File.h"
 #include<iostream>
+using namespace std;
 class OpenFiles {
 public: 
     static const int NOFILES = 15;
