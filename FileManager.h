@@ -9,6 +9,7 @@
 #include"OpenFiles.h"
 #include"FileSystem.h"
 #include"File.h"
+#include "DirectoryEntry.h"
 class FileManager {
 public: 
     Inode* rootDirInode;
@@ -18,6 +19,11 @@ public:
    
     
     void Initialize();
+
+	/**
+	 * @comment 在pwd当中找出fName对应的目录项
+	 */
+	DirectoryEntry* FindDir(char* fName,Inode* pwd);
     
 	/**
 	 * @comment 格式化硬盘

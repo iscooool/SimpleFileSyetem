@@ -2,7 +2,7 @@
 #include "Context.h"
 #include "FileManager.h"
 #include "FileSystem.h"
-
+#include "Shell.h"
 using namespace std;
 
 extern Context cxt;
@@ -16,7 +16,8 @@ int main() {
 
 	fs->LoadSuperBlock();
 
-	//fs->IFree(11);p
+	Shell sh;
+	sh.RunShell();
 
 	/*Inode* pNode = fs->IAlloc();
 	pNode->i_mode |= Inode::IALLOC;
@@ -31,7 +32,7 @@ int main() {
 
 	cout << "Inode编号：" << pNode->i_number << endl;*/
 
-	Inode* RInode = new Inode();
+	/*Inode* RInode = new Inode();
 	RInode->i_number = 98;
 	RInode->ICopy();
 
@@ -43,7 +44,7 @@ int main() {
 	cxt.c_ReadBuffer = Buffer;
 	RInode->ReadI();
 	Buffer[10] = '\0';
-	cout << "读入内容为：" << Buffer << endl;
+	cout << "读入内容为：" << Buffer << endl;*/
 
 
 	//int blkno = 0;

@@ -14,6 +14,7 @@ Context cxt;
 Context::Context() {
 
 	this->c_spb = new SuperBlock();
+
 	this->MyDisk = fopen("MyDisk.img", "rb+");
 	
 }
@@ -29,7 +30,9 @@ Context::~Context() {
 FileManager* Context::GetFileManager() {
     return &(this->c_FileManager);
 }
-
+Inode* Context::GetrootDirInode() {
+	return &(this->c_rootDirInode);
+}
 /**
  * @return inode*
  */
@@ -40,8 +43,8 @@ Inode* Context::GetPwd() {
 /**
  * @return char*
  */
-char* Context::GetPwdPath() {
-	return this->c_pwd_path;
+string* Context::GetPwdPath() {
+	return &(this->c_pwd_path);
 }
 
 /**
@@ -64,7 +67,9 @@ FileSystem* Context::GetFileSystem() {
 FILE* Context::GetMyDisk() {
 	return this->MyDisk;
 }
-
+OpenFiles* Context::GetOpenFiles() {
+	return &(this->c_OpenFiles);
+}
 /**
  * @return SuperBlock*
  */

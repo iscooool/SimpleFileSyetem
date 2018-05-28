@@ -79,7 +79,7 @@ void Inode::ReadI() {
 			return;
 		}
 		
-		Buffer = (void*)((char*)Buffer+offset);							//Buffer指向的缓冲区也加上offset
+		Buffer = (void*)((char*)Buffer + nbytes);						//Buffer指向的缓冲区也加上offset
 
 		cxt.GetIOParameter()->m_Base += nbytes;
 		cxt.GetIOParameter()->m_Offset += nbytes;
@@ -138,7 +138,7 @@ void Inode::WriteI() {
 			return;
 		}
 
-		Buffer = (void*)((char*)Buffer + offset);							//Buffer指向的缓冲区也加上offset
+		Buffer = (void*)((char*)Buffer + nbytes);							//Buffer指向的缓冲区也加上offset
 
 		cxt.GetIOParameter()->m_Base += nbytes;
 		cxt.GetIOParameter()->m_Offset += nbytes;
@@ -150,6 +150,9 @@ void Inode::WriteI() {
 		}
 
 	}
+
+	cxt.GetFileSystem()->Update();
+	this->IUpdate();
     return;
 }
 
@@ -180,7 +183,7 @@ void Inode::ICopy() {
 
 	if (ino < 0 || ino >= FileSystem::INODE_NUMBER_PER_SECTOR*FileSystem::INODE_ZONE_SIZE)	//判断ino是否合法
 	{
-		cout << "结点指向Inode编号不合法" << endl;
+		cout << "Icopy():结点指向Inode编号不合法" << endl;
 		return;
 	}
 
@@ -208,7 +211,7 @@ void Inode::IUpdate() {
 
 	if (ino < 0 || ino >= FileSystem::INODE_NUMBER_PER_SECTOR*FileSystem::INODE_ZONE_SIZE)	//判断ino是否合法
 	{
-		cout << "结点指向Inode编号不合法" << endl;
+		cout << "IUpdate():结点指向Inode编号不合法" << endl;
 		return;
 	}
 	DiskInode DInode = this->ToDiskInode();

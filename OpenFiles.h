@@ -6,13 +6,14 @@
 #ifndef _OPENFILES_H
 #define _OPENFILES_H
 #include "File.h"
+#include "DirectoryEntry.h"
 #include<iostream>
 using namespace std;
 class OpenFiles {
 public: 
     static const int NOFILES = 15;
     File* ProccessOpenFileTable[NOFILES];
-    
+	char FileName[NOFILES][DirectoryEntry::DIRSIZ];
   
 	/**
 	 * @comment 返回空闲的fd下标

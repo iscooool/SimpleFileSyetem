@@ -9,7 +9,7 @@
 class Inode {
 public: 
     enum InodeFlag;
-    static const unsigned int IALLOC = 0x6000;						// 文件被使用 
+    static const unsigned int IALLOC = 0x8000;						// 文件被使用 
     static const unsigned int IFDIR = 0x4000;						// 文件类型：目录文件 
     static const unsigned int ILARG = 0x1000;						// 文件长度类型：大型或巨型文件 
     static const unsigned int IREAD = 0x100;						// 对文件的读权限 

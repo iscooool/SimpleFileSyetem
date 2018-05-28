@@ -28,7 +28,7 @@ int OpenFiles::AllocFreeSlot() {
 
 	for (int i = 0; i < OpenFiles::NOFILES; i++)		//找到第一个空闲的文件句柄
 	{
-		if (this->ProccessOpenFileTable[i] != NULL)
+		if (this->ProccessOpenFileTable[i] == NULL)
 		{
 			return i;
 		}

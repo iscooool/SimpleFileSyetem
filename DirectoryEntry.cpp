@@ -11,7 +11,7 @@
 
 
 DirectoryEntry::DirectoryEntry() {
-	this->m_ino = 0;
+	this->m_ino = -1;
 	this->m_name[0] = '\0';
 }
 

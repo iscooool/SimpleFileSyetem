@@ -15,22 +15,26 @@
 class Context {
 public: 
     FileManager c_FileManager;
+	Inode c_rootDirInode;
     Inode* c_pwd;
-    char* c_pwd_path;
+    string c_pwd_path;
     IOParameter c_IOParameter;
     char* c_Buffer;
 	FileSystem c_FileSystem;
     SuperBlock* c_spb;
     FILE* MyDisk;
     char* c_ReadBuffer;
+	OpenFiles c_OpenFiles;
     
   
     
     FileManager* GetFileManager();
+
+	Inode* GetrootDirInode();
     
     Inode* GetPwd();
     
-    char* GetPwdPath();
+    string* GetPwdPath();
     
     IOParameter* GetIOParameter();
     
@@ -40,7 +44,8 @@ public:
 
 	FILE* GetMyDisk();
 
-	void DwordCopy(int *src, int *dst, int count);
+	OpenFiles* GetOpenFiles();
+	
 
 public:
 	Context();
