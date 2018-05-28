@@ -41,7 +41,7 @@ void Shell::RunShell() {
 
 	while (true)
 	{
-		cout <<*(cxt.GetPwdPath())<<"#";
+		cout <<*(cxt.GetPwdPath())<<"# ";
 		cin.getline(cli, CNUM*CLENGTH);
 		this->CmdEntrance(cli);
 	}

@@ -202,6 +202,7 @@ void FileSystem::IFree(int number) {
  * @return int
  * @comment 分配DIskBlock
  */
+
 int FileSystem::Alloc() {
 	int blkno;
 	SuperBlock* sb = this->f_SuperBlock;
@@ -212,7 +213,7 @@ int FileSystem::Alloc() {
 
 	if (blkno == 0)											//说明已经没有空闲的盘块了
 	{
-		sb->s_nfree = 0;
+		sb->s_nfree = 1;
 		cout << "Alloc失败，已经没有空闲的盘块了" << endl;
 		return 0;
 
@@ -241,6 +242,7 @@ int FileSystem::Alloc() {
 	}
 
 	this->Update();							//更新SuperBlock
+
     return blkno;
 }
 

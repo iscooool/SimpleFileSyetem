@@ -129,6 +129,7 @@ void Inode::WriteI() {
 		{
 			return;
 		}
+		
 
 		int addr = (FileSystem::DATA_ZONE_START_SECTOR + (bn - 1))*Inode::BLOCK_SIZE + offset;	//计算第blkno个盘块的起始位置
 		fseek(MyDisk, addr, SEEK_SET);
@@ -350,9 +351,9 @@ int Inode::Bmap(int lbn) {
 
 			int addr = (FileSystem::DATA_ZONE_START_SECTOR + (FirstBlkno - 1))*Inode::BLOCK_SIZE;	//计算第phyBlkno个盘块的起始位置
 			fseek(MyDisk, addr, SEEK_SET);
-			if (!(fread(iTable, Inode::ADDRESS_PER_INDEX_BLOCK * sizeof(int), 1, MyDisk)))
+			if (!(fwrite(iTable, Inode::ADDRESS_PER_INDEX_BLOCK * sizeof(int), 1, MyDisk)))
 			{
-				cout << "第" << FirstBlkno << "块盘块读入失败" << endl;
+				cout << "第" << FirstBlkno << "块盘块写入失败" << endl;
 				return 0;
 			}
 		}
