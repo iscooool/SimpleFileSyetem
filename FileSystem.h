@@ -19,8 +19,8 @@ public:
     static const int INODE_ZONE_START_SECTOR = 2;
     static const int INODE_ZONE_SIZE = 1024 - 2;
     static const int DATA_ZONE_START_SECTOR = 1024;
-    static const int DATA_ZONE_END_SECTOR = 8000 - 1;
-    static const int DATA_ZONE_SIZE = 8000 - DATA_ZONE_START_SECTOR;
+    static const int DATA_ZONE_END_SECTOR = 18000 - 1;
+    static const int DATA_ZONE_SIZE = 18000 - DATA_ZONE_START_SECTOR;
     SuperBlock* f_SuperBlock;
     
    /**

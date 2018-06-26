@@ -12,9 +12,9 @@ int main() {
 
 	FileManager* fm = cxt.GetFileManager();
 	
-	fm->fformat();
+	//fm->fformat();
 
-	fs->LoadSuperBlock();
+	//fs->LoadSuperBlock();
 
 	Shell sh;
 	sh.RunShell();

@@ -23,6 +23,8 @@ Shell::Shell() {
 	strcpy(Shell::CodeTable[8], "close");
 	strcpy(Shell::CodeTable[9], "lsof");
 	strcpy(Shell::CodeTable[10], "seek");
+	strcpy(Shell::CodeTable[11], "format");
+	strcpy(Shell::CodeTable[12], "shutdown");
 
 
 }
@@ -43,7 +45,10 @@ void Shell::RunShell() {
 	{
 		cout <<*(cxt.GetPwdPath())<<"# ";
 		cin.getline(cli, CNUM*CLENGTH);
-		this->CmdEntrance(cli);
+		if (!this->CmdEntrance(cli))
+		{
+			return;
+		}
 	}
 	return;
 }
@@ -219,6 +224,8 @@ int Shell::CmdEntrance(char* cli) {
 			{
 				Buffer = getc(InFile);
 				char ch = Buffer;
+				if (Buffer == EOF)
+					break;
 				fm->Fwrite(fd, &ch, 1);
 				count++;
 			}
@@ -275,11 +282,20 @@ int Shell::CmdEntrance(char* cli) {
 		this->seek(fd, position);
 		break;
 	}
+	case Shell::FORMAT: {
+		FileManager* fm = cxt.GetFileManager();
+
+		fm->fformat();
+		break;
+	}
+	case Shell::SHUTDOWN: {
+		return 0;
+	}
 	default:
 		cout << "无效命令" << endl;
 		break;
 	}
-	return 0;
+	return 1;
 }
 /**
 *@ comment 列出当前目录的所有文件或者目录名
@@ -441,10 +457,17 @@ void Shell::read(int fd, int length) {
 	{
 		length = OpenFile->f_inode->i_size - OpenFile->f_offset;
 	}
-	char* Buffer = new char[length + 1];
-	fm->Fread(fd, Buffer, length);
-	Buffer[length] = '\0';
-	cout << Buffer << endl;							//输出Buffer内容
+	char* Buffer = new char[2];
+	for (int i = 0; i < length; i++)
+	{
+		fm->Fread(fd, Buffer, 1);
+		Buffer[1] = '\0';
+		cout << Buffer;
+	}
+	cout << endl;
+	//fm->Fread(fd, Buffer, length);
+	//Buffer[length] = '\0';
+	//cout << Buffer << endl;							//输出Buffer内容
 	delete Buffer;
 	return;
 }

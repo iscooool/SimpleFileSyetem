@@ -17,6 +17,11 @@ Context::Context() {
 
 	this->MyDisk = fopen("MyDisk.img", "rb+");
 	
+	c_FileSystem.LoadSuperBlock();
+	c_rootDirInode.i_number = 0;
+	c_rootDirInode.ICopy();
+	c_pwd = &c_rootDirInode;
+	
 }
 
 Context::~Context() {

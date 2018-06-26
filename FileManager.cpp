@@ -113,12 +113,12 @@ void FileManager::fformat() {
 	}
 								
 	Inode* rootDirInode = cxt.GetrootDirInode();			//初始化根节点
+	rootDirInode->Clean();
 	rootDirInode->i_mode = Inode::IALLOC | Inode::IFDIR;
 	rootDirInode->i_number = 0;
-	rootDirInode->i_uid = -1;
-	rootDirInode->i_gid = -1;
-	rootDirInode->i_size = 0;
-
+	
+	
+	rootDirInode->IUpdate();
 
 
 
@@ -194,7 +194,7 @@ int FileManager::Fcreat(char* fName, int mode) {
 	cxt.GetIOParameter()->m_Count = sizeof(DirectoryEntry);
 	pwd->WriteI();
 
-
+	fs->Update();
     return NewInode->i_number;
 }
 

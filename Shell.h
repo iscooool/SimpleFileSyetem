@@ -20,7 +20,9 @@ public:
 		WRITE = 7,
 		CLOSE = 8,
 		LSOF = 9,
-		SEEK = 10
+		SEEK = 10,
+		FORMAT = 11,
+		SHUTDOWN = 12
 	};
 	
 
